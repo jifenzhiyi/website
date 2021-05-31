@@ -8,12 +8,13 @@
         :src="require(`@/assets/pop/${mtype}.png`)" />
       <div class="info ellipsis3">{{ minfo }}</div>
       <div :class="['btn', mtype === 'confirm' && 'confirm']">
-        <a-button
-          :type="mtype !== 'success' ? 'danger' : ''"
-          @click="submit">确定</a-button>
-        <a-button
+        <a
+          :class="mtype"
+          @click="submit">确定</a>
+        <a
+          class="cancel"
           v-if="mtype === 'confirm'"
-          @click="hide">取消</a-button>
+          @click="hide">取消</a>
       </div>
     </div>
   </div>
@@ -74,6 +75,19 @@ export default {
     margin: 25px auto;
     align-items: center;
     justify-content: space-around;
+    a {
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      padding: 4px 25px;
+      border-radius: 3px;
+      &.success, &.error, &.confirm {
+        background: #f5222d;
+      }
+      &.cancel {
+        background: #d9d9d9;
+      }
+    }
   }
 }
 </style>

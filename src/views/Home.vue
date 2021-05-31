@@ -1,18 +1,43 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    首页
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
-
 export default {
   name: 'Home',
-  components: {
-    HelloWorld,
+  methods: {
+    test1() {
+      this.$notice_success({
+        minfo: 'success',
+        func: () => {
+          // TODO 待定
+        },
+      });
+    },
+    test2() {
+      this.$notice_error({
+        minfo: 'error',
+        func: () => {
+          // TODO 待定
+        },
+      });
+    },
+    test3() {
+      this.$notice_confirm({
+        minfo: '是否确定 XXX ?',
+        func: () => {
+          // TODO 待定
+        },
+      });
+    },
   },
 };
 </script>
+
+<style lang="less" scoped>
+.home {
+  position: relative;
+}
+</style>
