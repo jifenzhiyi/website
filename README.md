@@ -47,13 +47,15 @@ font-awesome i18n antd elementui
 Vue + antd(待定)
 
 ## 功能简介
-1.项目初始化搭建
 ```
+1.项目初始化搭建
 。配置路由
 。配置公共组件
 。配置公共样式文件
 。设置代码规范eslint
 。设置测试环境和正式环境基础配置
+
+2.创建轮播图组件
 ```
 
 ### Customize configuration
