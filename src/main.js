@@ -5,8 +5,10 @@ import store from './store';
 import storage from './utils/storage.js';
 import createComp from './utils/create.js';
 import config from '../package.json';
+import './styles/swiper.min.css';
 import './styles/main.less';
 import './styles/pop.less';
+import './utils/element.js';
 
 Vue.config.productionTip = false;
 Vue.prototype.$storage = storage;

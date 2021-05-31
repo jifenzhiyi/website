@@ -4,7 +4,8 @@ import Layout from 'comps/Layouts';
 import notFound from 'comps/404';
 
 Vue.use(VueRouter);
-const routerList = ['Home', 'About'];
+// 首页 关于我们 发展历程 项目介绍 新闻动态 加盟优势 加盟入口 其它
+const routerList = ['Home', 'About', 'History', 'Project', 'News', 'Join', 'Entrance', 'Other'];
 
 const routes = [
   { path: '/', redirect: '/home' },

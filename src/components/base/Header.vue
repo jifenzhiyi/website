@@ -1,8 +1,10 @@
 <template>
   <header>
     <nav>
-      <router-link to="/home">home</router-link> | 
-      <router-link to="/about">about</router-link>
+      <router-link
+        v-for="item in nav"
+        :key="item"
+        :to="'/' + item.toLowerCase()">{{item}}</router-link>
     </nav>
   </header>
 </template>
@@ -10,6 +12,11 @@
 <script>
 export default {
   name: 'Header',
+  data() {
+    return {
+      nav: ['Home', 'About', 'History', 'Project', 'News', 'Join', 'Entrance', 'Other'],
+    };
+  },
 };
 </script>
 

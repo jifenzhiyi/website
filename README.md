@@ -7,9 +7,9 @@ npm install XXXXXX --save-dev
 or
 yarn add XXXXXX
 // 已添加
-XXXXXXX === axios cross-env
+XXXXXXX === axios cross-env babel-plugin-component
 // 待定
-font-awesome i18n
+font-awesome i18n antd elementui
 ```
 
 ## 目录结构
@@ -47,6 +47,12 @@ font-awesome i18n
 Vue + antd(待定)
 
 ## 功能简介
+1.项目初始化搭建
+。配置路由
+。配置公共组件
+。配置公共样式文件
+。设置代码规范eslint
+。设置测试环境和正式环境基础配置
 
 ### Customize configuration
 
