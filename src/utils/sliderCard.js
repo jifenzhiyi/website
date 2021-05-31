@@ -196,17 +196,22 @@ Swiper.prototype = {
     // document.getElementById(`prev${this.clsSuffix}`).onclick = () => {
     //   that.throttle(that.prevSlider, 300, 300);
     // };
-    this.mainDom.addEventListener('touchstart', (e) => {
-      clearInterval(that.timer);
-      that.startX = e.changedTouches[0].clientX;
-      that.startY = e.changedTouches[0].clientY;
+    // touchstart mousedown
+    this.mainDom.addEventListener('mousedown', (e) => {
+      // console.log('touchstart e', e, 'this', this);
+      clearInterval(this.timer);
+      this.startX = e.clientX;
+      this.startY = e.clientY;
     });
-    this.mainDom.addEventListener('touchmove', (e) => {
+    // touchmove mousemove
+    this.mainDom.addEventListener('mousemove', (e) => {
       clearInterval(that.timer);
-      that.endX = e.changedTouches[0].clientX;
-      that.endY = e.changedTouches[0].clientY;
+      that.endX = e.clientX;
+      that.endY = e.clientY;
     });
-    this.mainDom.addEventListener('touchend', () => {
+    // touchend mouseup
+    this.mainDom.addEventListener('mouseup', () => {
+      console.log('touchend');
       if (!that.mainDom.style.transition) {
         that.mainDom.style.transition = `left ${that.aniTime / 1000}s`;
       }
