@@ -4,7 +4,7 @@
     <div class="main">
       <router-view />
     </div>
-    <base-footer />
+    <base-footer v-show="$route.name !== 'Home'" />
   </div>
 </template>
 
