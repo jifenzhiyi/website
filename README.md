@@ -63,7 +63,7 @@ Vue + antd(待定)
 
 4.首页的canvas背景特效制作
 
-5.
+5.首页基本完成
 ```
 
 ### Customize configuration

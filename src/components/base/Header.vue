@@ -1,30 +1,40 @@
 <template>
   <header>
     <div class="content">
-      <!-- <img
+      <img
         class="logo"
-        src="@/assets/images/logo.png" /> -->
+        src="@/assets/images/logo.png" />
       <nav>
         <router-link to="/home"><span class="box-sizing">首页</span></router-link>
-        <router-link to="/about">
+        <a :class="($route.name === 'About' || $route.name === 'History' || $route.name === 'Project') && 'router-link-active'">
           <span class="box-sizing">关于我们</span>
           <div class="children">
-            <a class="one">公司介绍</a>
-            <a class="one">发展历程</a>
-            <a class="one">项目介绍</a>
+            <router-link
+              class="one"
+              to="/about">公司介绍</router-link>
+            <router-link
+              class="one"
+              to="/history">发展历程</router-link>
+            <router-link
+              class="one"
+              to="/project">项目介绍</router-link>
           </div>
-        </router-link>
+        </a>
         <router-link to="/news">
           <span class="box-sizing">新闻动态</span>
         </router-link>
         <router-link to="/other">
           <span class="box-sizing">每特惠</span>
         </router-link>
-        <a>
+        <a :class="($route.name === 'Join' || $route.name === 'Entrance') && 'router-link-active'">
           <span class="box-sizing">合伙入驻</span>
           <div class="children">
-            <a class="one">加盟优势</a>
-            <a class="one">加盟入口</a>
+            <router-link
+              class="one"
+              to="/join">加盟优势</router-link>
+            <router-link
+              class="one"
+              to="/entrance">加盟入口</router-link>
           </div>
         </a>
       </nav>
@@ -41,6 +51,7 @@ export default {
 
 <style lang="less" scoped>
 header {
+  z-index: 3;
   width: 100%;
   height: 80px;
   display: flex;
@@ -89,7 +100,7 @@ header {
             font-size: 14px;
             color: #666666;
             border-bottom: solid 1px #eee;
-            &.now, &:hover {
+            &.router-link-active, &:hover {
               color: #fff;
               background: #d83119;
             }
