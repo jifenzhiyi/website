@@ -23,7 +23,7 @@ export default {
     };
   },
   mounted() {
-    if (!this.swiper) {
+    this.$nextTick(() => {
       this.swiper = new Swiper({
         gap: -100,
         scale: 0.8,
@@ -33,14 +33,18 @@ export default {
         intervalTime: 3000,
         imgArr: this.imgArr,
         clsSuffix: '-stack',
-      }).init();
-    }
+      });
+      this.swiper.init();
+    });
+  },
+  beforeDestroy() {
+    this.swiper.destory();
   },
 };
 </script>
 
 <style lang="less">
-.swiper-list{
+.swiper-list {
   height: 200px;
   overflow: hidden;
   position: relative;
@@ -50,7 +54,7 @@ export default {
   height: 100%;
   position: relative;
 }
-.swiper-main span{
+.swiper-main span {
   top: 0px;
   display: block;
   overflow: hidden;
@@ -64,7 +68,10 @@ export default {
     opacity: 1;
     position: absolute;
     background: #000;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
   }
   img {
     display: block;

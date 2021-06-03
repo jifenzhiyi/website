@@ -11,10 +11,10 @@ export default {
 <style lang="less" scoped>
 footer {
   width: 100%;
-  height: 40px;
+  height: 340px;
   display: flex;
-  background: #ccc;
   align-items: center;
+  background: #434343;
   justify-content: center;
 }
 </style>
