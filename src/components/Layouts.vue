@@ -3,20 +3,20 @@
     <base-header />
     <div class="main">
       <router-view />
+      <base-footer v-show="$route.name !== 'Home'" />
     </div>
-    <!-- <base-footer v-show="$route.name !== 'Home'" /> -->
   </div>
 </template>
 
 <script>
 import BaseHeader from 'comps/base/Header';
-// import BaseFooter from 'comps/base/Footer';
+import BaseFooter from 'comps/base/Footer';
 
 export default {
   name: 'Layouts',
   components: {
     BaseHeader,
-    // BaseFooter,
+    BaseFooter,
   },
 };
 </script>
@@ -28,7 +28,7 @@ export default {
   flex-direction: column;
   .main {
     flex: 1;
-    overflow: hidden;
+    overflow: auto;
   }
 }
 </style>
