@@ -27,30 +27,11 @@
 </template>
 
 <script>
+import transition from '@/mixins/transition.js';
+
 export default {
   name: 'About',
-  data() {
-    return {
-      descPos: [
-        { top: '-100%', left: '-500px' },
-        { top: '200%', left: '-500px' },
-      ],
-    };
-  },
-  mounted() {
-    setTimeout(() => {
-      this.descPos = [
-        { top: '25%', left: 0 },
-        { top: '65%', left: 0 },
-      ];
-    }, 0);
-  },
-  beforeDestroy() {
-    this.descPos = [
-      { top: '-100%', left: '-500px' },
-      { top: '200%', left: '-500px' },
-    ];
-  },
+  mixins: [transition],
 };
 </script>
 
@@ -79,8 +60,8 @@ export default {
   .title {
     color: #333;
     font-size: 30px;
+    font-weight: 400;
     padding-top: 80px;
-    font-weight: bold;
     position: relative;
     padding-bottom: 20px;
     &::after {
