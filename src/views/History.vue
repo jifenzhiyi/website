@@ -1,15 +1,8 @@
 <template>
   <div class="page">
-    <div class="banner">
-      <div class="content">
-        <div
-          class="desc desc1"
-          :style="'top:'+descPos[0].top+';left:'+descPos[1].left">让真正高性价比的好商品<br />走进千家万户</div>
-        <div
-          class="desc desc2"
-          :style="'top:'+descPos[1].top+';left:'+descPos[1].left">———— 临期优选</div>
-      </div>
-    </div>
+    <banner
+      text="让真正高性价比的好商品<br />走进千家万户"
+      desc="———— 临期优选" />
     <div class="content">
       <div class="center">
         <div class="title">发展历程</div>
@@ -42,11 +35,11 @@
 </template>
 
 <script>
-import transition from '@/mixins/transition.js';
+import Banner from 'comps/public/Banner.vue';
 
 export default {
   name: 'History',
-  mixins: [transition],
+  components: { Banner },
 };
 </script>
 
