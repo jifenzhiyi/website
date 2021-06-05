@@ -196,21 +196,21 @@ class Swiper {
 
   // eslint-disable-next-line class-methods-use-this
   eventBind() {
-    console.log('eventBind');
+    // console.log('eventBind');
     // document.getElementById(`next${this.clsSuffix}`).onmouseover = () => {
-    //   clearInterval(that.timer);
+    //   clearInterval(this.timer);
     // };
     // document.getElementById(`next${this.clsSuffix}`).onmouseout = () => {
-    //   that.timer = setInterval(that.nextSlider.bind(that, that.aniTime), that.intervalTime);
+    //   this.timer = setInterval(this.nextSlider.bind(this, this.aniTime), this.intervalTime);
     // };
     // document.getElementById(`next${this.clsSuffix}`).onclick = () => {
-    //   that.throttle(that.nextSlider, 300, 300);
+    //   this.throttle(this.nextSlider, 300, 300);
     // };
     // document.getElementById(`prev${this.clsSuffix}`).onmouseover = () => {
-    //   clearInterval(that.timer);
+    //   clearInterval(this.timer);
     // };
     // document.getElementById(`prev${this.clsSuffix}`).onmouseout = () => {
-    //   that.timer = setInterval(that.nextSlider.bind(that, that.aniTime), that.intervalTime);
+    //   this.timer = setInterval(this.nextSlider.bind(this, this.aniTime), this.intervalTime);
     // };
     // document.getElementById(`prev${this.clsSuffix}`).onclick = () => {
     //   this.throttle(this.prevSlider, 300, 300);

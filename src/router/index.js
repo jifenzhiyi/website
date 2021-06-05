@@ -12,7 +12,13 @@ const routes = [
   {
     path: '/',
     component: Layout,
-    children: [],
+    children: [
+      {
+        path: '/news/:id',
+        name: 'news',
+        component: () => import(/* webpackChunkName: "Details" */ '../views/Details.vue'),
+      },
+    ],
   },
   { path: '*', name: 'notFound', component: notFound },
 ];
@@ -31,6 +37,12 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const main = document.getElementById('main');
+  main && (main.scrollTop = 0);
+  next();
 });
 
 export default router;

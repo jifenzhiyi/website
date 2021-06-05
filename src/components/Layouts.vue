@@ -1,10 +1,12 @@
 <template>
   <div class="layouts">
     <base-header />
-    <div class="main">
+    <div
+      id="main"
+      class="main">
       <router-view />
+      <base-footer v-show="$route.name !== 'Home'" />
     </div>
-    <base-footer v-show="$route.name !== 'Home'" />
   </div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
   flex-direction: column;
   .main {
     flex: 1;
-    overflow: hidden;
+    overflow: auto;
   }
 }
 </style>
