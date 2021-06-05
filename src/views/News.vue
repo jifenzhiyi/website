@@ -5,13 +5,9 @@
       desc="———— 企业愿景" />
     <div class="content">
       <div class="list">
-<<<<<<< HEAD
         <div
           class="one"
           @click="routeTo(1)">
-=======
-        <div class="one">
->>>>>>> bc9c6e6d11c94903d17b8fbfc2656cfdb972c3ca
           <img src="@/assets/images/img1.jpg" />
           <div class="line" />
           <div class="text">
@@ -20,13 +16,9 @@
           </div>
           <div class="next"></div>
         </div>
-<<<<<<< HEAD
         <div
           class="one"
           @click="routeTo(2)">
-=======
-        <div class="one">
->>>>>>> bc9c6e6d11c94903d17b8fbfc2656cfdb972c3ca
           <img src="@/assets/images/img2.jpg" />
           <div class="line" />
           <div class="text">
@@ -35,13 +27,9 @@
           </div>
           <div class="next"></div>
         </div>
-<<<<<<< HEAD
         <div
           class="one"
           @click="routeTo(3)">
-=======
-        <div class="one">
->>>>>>> bc9c6e6d11c94903d17b8fbfc2656cfdb972c3ca
           <img src="@/assets/images/img3.jpg" />
           <div class="line" />
           <div class="text">
@@ -50,13 +38,9 @@
           </div>
           <div class="next"></div>
         </div>
-<<<<<<< HEAD
         <div
           class="one"
           @click="routeTo(4)">
-=======
-        <div class="one">
->>>>>>> bc9c6e6d11c94903d17b8fbfc2656cfdb972c3ca
           <img src="@/assets/images/img4.jpg" />
           <div class="line" />
           <div class="text">
@@ -76,14 +60,11 @@ import Banner from 'comps/public/Banner.vue';
 export default {
   name: 'News',
   components: { Banner },
-<<<<<<< HEAD
   methods: {
     routeTo(id) {
       this.$router.push(`/news/${id}`);
     },
   },
-=======
->>>>>>> bc9c6e6d11c94903d17b8fbfc2656cfdb972c3ca
 };
 </script>
 
