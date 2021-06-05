@@ -1,6 +1,7 @@
 # pc 搭建
 
 ## 安装依赖
+
 ```
 npm install XXXXXX --save-dev
 or
@@ -42,13 +43,17 @@ font-awesome i18n antd elementui
 1.https://www.iconfont.cn/
 2.https://antdv.com/docs/vue/introduce-cn/
 ```
+
 ## 技术栈
+
 Vue + antd(待定)
 
 ## 功能简介
+
 待定
 
 ## 开发日志
+
 ```
 1.项目初始化搭建
 a.配置路由
