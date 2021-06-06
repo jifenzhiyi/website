@@ -64,7 +64,7 @@ header {
     align-items: center;
     justify-content: space-between;
     .logo {
-      height: 36px;
+      height: 48px;
     }
     .tel {
       display: flex;
