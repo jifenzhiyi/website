@@ -32,6 +32,7 @@ export default {
         {
           title: '临期优选：打造食品品牌特价新零售平台',
           content: `<video
+            width="1200"
             controls="controls"
             poster="/images/v1.jpg"
             src="/video/20210319临期优选_仓库_01.mp4"></video><br /><br /><br />
@@ -43,6 +44,7 @@ export default {
           <p style="text-indent: 2em;">自从2015年启动办公室食品智能柜项目以后，项目组一直在不懈奋斗，并在2020年成立临期优选，倾力打造下一个食品行业独角兽企业。</p>
           <br /><br /><br />
           <video
+            width="1200"
             controls="controls"
             poster="/images/v3.jpg"
             src="/video/20210319临期优选_宣传_02.mp4"></video>

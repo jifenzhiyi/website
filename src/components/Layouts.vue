@@ -27,6 +27,7 @@ export default {
 .layouts {
   height: 100%;
   display: flex;
+  min-width: 1200px;
   flex-direction: column;
   .main {
     flex: 1;

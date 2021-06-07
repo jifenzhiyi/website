@@ -6,8 +6,8 @@
       ref="carousel"
       direction="vertical"
       indicator-position="none"
-      :height="height"
-      :autoplay="false">
+      :autoplay="false"
+      :height="height">
       <el-carousel-item class="bg1">
         <img
           src="/images/text.png"
@@ -78,8 +78,8 @@ export default {
       canvas.height = homePage.clientHeight;
     });
     window.carousel = this.$refs.carousel;
-    window.addEventListener('mousewheel', this.debounce(this.handleScroll1, 200), true) 
-      || window.addEventListener('DOMMouseScroll', this.debounce(this.handleScroll2, 200), false);
+    window.addEventListener('mousewheel', this.debounce(this.handleScroll1, 100), true) 
+      || window.addEventListener('DOMMouseScroll', this.debounce(this.handleScroll2, 100), false);
     this.init();
   },
   methods: {
@@ -194,7 +194,7 @@ export default {
   height: 100%;
   .bg1 {
     background: url(/images/bg1.jpg) center no-repeat;
-    background-size: 100% 100%;
+    background-size: cover;
     .text {
       top: 10%;
       left: 10%;
