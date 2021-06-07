@@ -1,5 +1,7 @@
 <template>
-<div class="banner">
+<div
+  class="banner"
+  :style="`background: url(${bg}) center no-repeat`">
   <div class="content">
     <div
       class="desc desc1"
@@ -19,15 +21,14 @@ import transition from '@/mixins/transition.js';
 export default {
   name: 'Banner',
   mixins: [transition],
-  props: ['text', 'desc'],
+  props: ['text', 'desc', 'bg'],
 };
 </script>
 
 <style lang="less" scoped>
 .banner {
-  height: 400px;
+  height: 496px;
   position: relative;
-  background: url(/images/banner2.jpg) center no-repeat;
   .content {
     height: 100%;
     overflow: hidden;

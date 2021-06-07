@@ -78,8 +78,8 @@ export default {
       canvas.height = homePage.clientHeight;
     });
     window.carousel = this.$refs.carousel;
-    window.addEventListener('mousewheel', this.debounce(this.handleScroll1, 100), true) 
-      || window.addEventListener('DOMMouseScroll', this.debounce(this.handleScroll2, 100), false);
+    homePage.addEventListener('mousewheel', this.debounce(this.handleScroll1, 100), true) 
+      || homePage.addEventListener('DOMMouseScroll', this.debounce(this.handleScroll2, 100), false);
     this.init();
   },
   methods: {

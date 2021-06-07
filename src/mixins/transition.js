@@ -10,8 +10,8 @@ export default {
   mounted() {
     setTimeout(() => {
       this.descPos = [
-        { top: '25%', left: 0 },
-        { top: '65%', left: 0 },
+        { top: '30%', left: 0 },
+        { top: '60%', left: 0 },
       ];
     }, 0);
   },

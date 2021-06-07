@@ -2,7 +2,8 @@
   <div class="page">
     <banner
       text="中国食品新零售<br />千亿市值独角兽企业"
-      desc="———— 企业愿景" />
+      desc="———— 企业愿景"
+      bg="/images/banner2.jpg" />
     <div class="content">
       <div class="list">
         <div

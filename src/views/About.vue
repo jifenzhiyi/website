@@ -1,15 +1,9 @@
 <template>
   <div class="page">
-    <div class="banner">
-      <div class="content">
-        <div
-          class="desc desc1"
-          :style="'top:'+descPos[0].top+';left:'+descPos[1].left">让真正高性价比的好商品<br />走进千家万户</div>
-        <div
-          class="desc desc2"
-          :style="'top:'+descPos[1].top+';left:'+descPos[1].left">———— 临期优选</div>
-      </div>
-    </div>
+    <banner
+      text="让真正高性价比的好商品<br />走进千家万户"
+      desc="———— 临期优选"
+      bg="/images/banner1.jpg" />
     <div class="content">
       <div class="center">
         <div class="title">公司介绍</div>
@@ -27,53 +21,16 @@
 </template>
 
 <script>
-import transition from '@/mixins/transition.js';
+import Banner from 'comps/public/Banner.vue';
 
 export default {
   name: 'About',
-  mixins: [transition],
+  components: { Banner },
 };
 </script>
 
 <style lang="less" scoped>
-.banner {
-  height: 400px;
-  position: relative;
-  background: url(/images/banner1.jpg) center no-repeat;
-  .content {
-    height: 100%;
-    overflow: hidden;
-    position: relative;
-    .desc { 
-      color: #fff;
-      position: absolute;
-      transition: all 2s;
-      &.desc1 { font-size: 48px; }
-      &.desc2 { font-size: 24px; }
-    } 
-  }
-}
 .center {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  .title {
-    color: #333;
-    font-size: 30px;
-    font-weight: 400;
-    padding-top: 80px;
-    position: relative;
-    padding-bottom: 20px;
-    &::after {
-      left: 50%;
-      bottom: 0;
-      width: 40px;
-      content: ' ';
-      position: absolute;
-      margin-left: -20px;
-      border-bottom: solid 2px #d83119;
-    }
-  }
   .desc {
     color: #999;
     font-size: 16px;

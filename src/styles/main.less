@@ -88,6 +88,28 @@ body {
 .content {
   width: 1200px;
   margin: 0 auto;
+  .center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .title {
+      color: #333;
+      font-size: 30px;
+      font-weight: 400;
+      padding-top: 80px;
+      position: relative;
+      padding-bottom: 20px;
+      &::after {
+        left: 50%;
+        bottom: 0;
+        width: 40px;
+        content: ' ';
+        position: absolute;
+        margin-left: -20px;
+        border-bottom: solid 2px #d83119;
+      }
+    }
+  }
 }
 .page {
   min-height: 600px;

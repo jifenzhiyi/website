@@ -20,7 +20,10 @@ const osType = () => {
     ostype = 'iPhone';
   } else if (userAgent.indexOf('Windows Phone') > -1) {
     ostype = 'WindowsPhone';
+  } else if (userAgent.indexOf('Mac') > -1) {
+    ostype = 'mac';
   }
+  // console.log('userAgent', userAgent);
   return ostype;
 };
 
