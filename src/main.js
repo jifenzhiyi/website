@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import 'vue-area-linkage/dist/index.css';
 import VueAreaLinkage from 'vue-area-linkage';
 import App from './App.vue';
 import router from './router';
@@ -10,6 +9,7 @@ import config from '../package.json';
 import './styles/swiper.min.css';
 import './styles/main.less';
 import './styles/pop.less';
+import './styles/area.css';
 import './utils/element.js';
 
 Vue.config.productionTip = false;

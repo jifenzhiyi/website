@@ -37,6 +37,6 @@ module.exports = {
     'vue/max-attributes-per-line': 1,
     'vue/require-valid-default-prop': 0,
     'no-trailing-spaces': 0,
-    'eqeqeq': 0,
+    eqeqeq: 0,
   },
 };
