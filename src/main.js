@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import 'vue-area-linkage/dist/index.css';
+import VueAreaLinkage from 'vue-area-linkage';
 import App from './App.vue';
 import router from './router';
 import store from './store';
@@ -12,6 +14,7 @@ import './utils/element.js';
 
 Vue.config.productionTip = false;
 Vue.prototype.$storage = storage;
+Vue.use(VueAreaLinkage);
 Vue.use(createComp);
 
 console.info(`%cv${config.version} (${new Date().toLocaleString()})`, 'color: red');

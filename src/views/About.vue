@@ -39,7 +39,5 @@ export default {
       text-indent: 2em;
     }
   }
-  .ad { margin-top: 80px; }
-  .line { height: 80px; }
 }
 </style>

@@ -6,7 +6,8 @@ npm install XXXXXX --save-dev
 or
 yarn add XXXXXX
 // 已添加
-XXXXXXX === axios cross-env babel-plugin-component
+XXXXXXX === axios cross-env babel-plugin-component vue-area-linkage area-data
+// https://github.com/dwqs/vue-area-linkage 省市区联动
 // 待定
 font-awesome i18n antd elementui
 ```

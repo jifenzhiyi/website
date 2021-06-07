@@ -20,7 +20,7 @@ class Swiper {
       this.containerWidth = document.body.clientWidth; // 轮播图盒子宽度
     } else {
       // PC端
-      this.containerWidth = 1000; // 轮播图盒子宽度
+      this.containerWidth = 1200; // 轮播图盒子宽度
     }
     this.imgWidth = obj.imgWidth; // 图片宽度
     this.aniTime = obj.aniTime || 500;
