@@ -6,8 +6,9 @@
       ref="carousel"
       direction="vertical"
       indicator-position="none"
-      :autoplay="false"
-      :height="height">
+      :autoplay="true"
+      :height="height"
+      @change="onChange">
       <el-carousel-item class="bg1">
         <img
           src="/images/text.png"
@@ -83,6 +84,9 @@ export default {
     this.init();
   },
   methods: {
+    onChange(idx) {
+      this.indexNow = idx;
+    },
     debounce(func, wait) {
       let timeout;
       // eslint-disable-next-line func-names
