@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
-import i18n from '@/locale';
 import { END_POINT } from '@/config';
-import { Modal } from 'ant-design-vue';
 import storage from '@/utils/storage';
 
 // 请求拦截
@@ -17,31 +15,6 @@ const defaultResponseInterceptors = (response) => response;
 // const defaultStopLoading = () => {
 //   console.log('请求结束...');
 // };
-
-function modelInfo(ajaxError) {
-  const lang = storage.get('wms_lang');
-  console.log('modelInfo ajaxError', ajaxError, 'lang', lang);
-  // TODO 增加非中文的错误提示
-  if (lang === 'ja') {
-    // 日文版的时候
-    if (ajaxError.code === '0029') ajaxError.msg = i18n.t('tips.delete_error1');
-    if (ajaxError.code === '0030') ajaxError.msg = i18n.t('tips.delete_error2');
-  }
-  Modal.error({
-    title: '错误信息',
-    content: ajaxError.msg,
-    onOk() {
-      if (['0002', '0006', '0007', '0017'].includes(ajaxError.code)) {
-        storage.clear();
-        lang && storage.set('wms_lang', lang);
-        window.location.href = '/login';
-      }
-      setTimeout(() => {
-        storage.remove('ajax_error');
-      }, 1000);
-    },
-  });
-}
 
 class Request {
   constructor(options = {}) {
@@ -80,33 +53,13 @@ class Request {
     let newConfig = { ...this.config };
     newConfig = Object.assign(newConfig, options);
     newConfig.url = url;
-    if (url !== '/api/users/login') {
-      newConfig.method === 'GET'
-        ? newConfig.params.accessToken = storage.get('wms_user_token')
-        : newConfig.data.accessToken = storage.get('wms_user_token');
-      newConfig.method === 'GET'
-        ? newConfig.params.warehouseId = storage.get('wms_warehouse_id')
-        : newConfig.data.warehouseId = storage.get('wms_warehouse_id');
-      newConfig.method === 'GET'
-        ? newConfig.params.pageUrl = storage.get('wms_ajax_config')
-        : newConfig.data.pageUrl = storage.get('wms_ajax_config');
-      newConfig.method === 'GET'
-        ? newConfig.data = null
-        : newConfig.params = null;
-    }
     params && params.isBlob && (newConfig.responseType = 'blob');
-    const ajaxError = storage.get('ajax_error');
-    if (ajaxError) {
-      console.log('ajaxError', ajaxError);
-      // modelInfo(ajaxError);
-      // return false;
-    }
     // params && params.isLoading && this.startLoading();
     return this.client.request(newConfig)
       .then((res) => {
         // params && params.isLoading && this.stopLoading();
         if (res.data && res.status !== 200) {
-          Modal.error({ title: res.status, content: res.data.message });
+          console.error({ title: res.status, content: res.data.message });
           return null;
         }
         if (params && params.isBlob) {
@@ -114,7 +67,6 @@ class Request {
         }
         if (res.data && res.data.code !== '0000') {
           storage.set('ajax_error', res.data);
-          modelInfo(res.data);
           return null;
         }
         return res.data;

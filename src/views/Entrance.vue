@@ -11,51 +11,67 @@
           <div class="one">
             <div class="item">
               <span>姓 名：</span>
-              <div class="sub">
+              <div :class="['sub', !verify.name && 'warn']">
                 <el-input
+                  placeholder="必填项"
                   v-model="params.name"
-                  placeholder="必填项"></el-input>
+                  @blur="inputChange('name')"></el-input>
               </div>
+              <div
+                v-show="!verify.name"
+                class="error">请输入用户名</div>
             </div>
             <div class="item">
               <span>性 别：</span>
               <div class="sub">
                 <el-radio
-                  v-model="params.sex"
-                  label="男">男</el-radio>
+                  v-model="params.gender"
+                  label="0">男</el-radio>
                 <el-radio
-                  v-model="params.sex"
-                    label="女">女</el-radio>
+                  v-model="params.gender"
+                  label="1">女</el-radio>
               </div>
             </div>
           </div>
           <div class="one">
             <div class="item">
               <span>所在地区：</span>
-              <div class="sub">
+              <div :class="['sub', !verify.area && 'warn']">
                 <!-- 文档地址：https://github.com/dwqs/vue-area-linkage -->
                 <area-select
-                  type="all"
-                  v-model="params.area"
-                  :data="pca"></area-select>
+                  type="text"
+                  :data="pca"
+                  v-model="area"
+                  @change="selectChange"></area-select>
                 <!-- 省市区：<area-select v-model="params.area" :data="pcaa"></area-select> -->
               </div>
+              <div
+                v-show="!verify.area"
+                class="error">请选择所在地区</div>
             </div>
           </div>
           <div class="one">
             <div class="item">
               <span>联系电话：</span>
-              <div class="sub">
+              <div :class="['sub', !verify.mobile && 'warn']">
                 <el-input
-                  v-model="params.tel"
-                  placeholder="必填项"></el-input></div>
+                  v-model="params.mobile"
+                  placeholder="必填项"
+                  @blur="inputChange('mobile')"></el-input></div>
+              <div
+                v-show="!verify.mobile"
+                class="error">请输入联系电话</div>
             </div>
             <div class="item">
               <span>微信号码：</span>
-              <div class="sub">
+              <div :class="['sub', !verify.wechatID && 'warn']">
                 <el-input
-                  v-model="params.wechat"
-                  placeholder="必填项"></el-input>
+                  v-model="params.wechatID"
+                  placeholder="必填项"
+                  @blur="inputChange('wechatID')"></el-input>
+              <div
+                v-show="!verify.wechatID"
+                class="error">请输入微信号码</div>
               </div>
             </div>
           </div>
@@ -86,6 +102,7 @@
 <script>
 import { pca } from 'area-data'; // pcaa
 import Banner from 'comps/public/Banner.vue';
+import apply from './api';
 
 export default {
   name: 'Join',
@@ -93,18 +110,50 @@ export default {
   data() {
     return {
       pca,
+      area: [], // 地区
       params: {
         name: '', // 姓名
-        sex: '男', // 性别
-        area: [], // 地区
-        tel: '', // 电话
-        wechat: '', // 微信
+        gender: '0', // 性别 0 男, 1 女
+        province: '', // 省
+        city: '', // 市
+        mobile: '', // 电话
+        wechatID: '', // 微信
+      },
+      verify: {
+        name: true,
+        area: true,
+        province: true,
+        city: true,
+        mobile: true,
+        wechatID: true,
       },
     };
   },
   methods: {
-    submit() {
-      console.log('params', this.params);
+    selectChange() {
+      this.verify.area = true;
+    },
+    inputChange(key) {
+      this.verify[key] = !!this.params.name;
+    },
+    async submit() {
+      Object.keys(this.params).forEach((item) => {
+        this.verify[item] = true;
+        if (item !== 'gender') {
+          if (item === 'province' || item === 'city') {
+            this.verify.area = this.area.length == 2;
+          } else {
+            !this.params[item] && (this.verify[item] = false);
+          }
+        }
+      });
+      const result = Object.values(this.verify).every((item) => item);
+      if (result) {
+        this.params.province = this.area[0];
+        this.params.city = this.area[1];
+        const res = await apply(this.params);
+        console.log('res', res);
+      }
     },
   },
 };
@@ -121,6 +170,7 @@ export default {
     width: 100%;
     height: 100px;
     display: flex;
+    position: relative;
     align-items: center;
     .btn {
       width: 160px;
@@ -137,6 +187,7 @@ export default {
       height: 50px;
       display: flex;
       margin-right: 50px;
+      position: relative;
       align-items: center;
       span {
         width: 120px;
@@ -147,6 +198,12 @@ export default {
           content: ' *';
           color: #e6310e;
         }
+      }
+      .error {
+        top: 120%;
+        left: 135px;
+        color: #e6310e;
+        position: absolute;
       }
     }
   }
