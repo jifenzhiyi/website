@@ -31,18 +31,19 @@ export default {
       id: 0,
       details: [
         {
+          // <a href="https://v.qq.com/x/page/g325160yeu3.html" target="_blank">
+          // <img src="/images/v1.jpg" width="1200" /></a>
+          // <a href="https://v.qq.com/x/page/r3251397yg2.html" target="_blank">
+          // <img src="/images/v3.jpg" width="1200" /></a>
           title: '临期优选：打造食品品牌特价新零售平台',
-          content: `<a href="https://v.qq.com/x/page/g325160yeu3.html" target="_blank">
-          <img src="/images/v1.jpg" width="1200" /></a><br /><br /><br />
+          content: `<div id="mod_player_skin1"></div><br /><br /><br />
           <p style="text-indent: 2em;">一天净赚3000元、毛利率70%、月成交额上亿、千亿级商机……这些数字，都指向了一个看来不太起眼的市场——临期食品。</p><br/>
           <p style="text-indent: 2em;">在中国，一家销售食品饮料的贸易公司，每年大约会产生100万左右的临期品，每年至少损失几十万，像这样的公司，中国至少有10万个！随着越来越多临期食品的出现，其市场价值也逐渐被发掘。据统计，2020年中国零食行业市场规模达到了惊人的3万亿元。从供给侧来看，每年都将有大量的产品流入到临期食品行业，即使按1%的库存沉淀计算，临期食品也将成为“千亿市场”，市场需求和市场潜力显而易见。因此，食品行业需要一场革命，社会更需要一个解决供需方矛盾及行业生态健康发展的“数字化专业化供应链平台”！</p>
           <br /><br /><br /><img src="/images/v2.jpg" /><br /><br /><br />
           <p style="text-indent: 2em;">杭州昌盛恒驰供应链科技有限公司（以下简称“临期优选”）本着“让真正高性价比的好商品走入千家万户”的使命，砥砺前行。</p><br />
           <p style="text-indent: 2em;">临期优选，打造新零售平台</p>
           <p style="text-indent: 2em;">自从2015年启动办公室食品智能柜项目以后，项目组一直在不懈奋斗，并在2020年成立临期优选，倾力打造下一个食品行业独角兽企业。</p>
-          <br /><br /><br />
-          <a href="https://v.qq.com/x/page/r3251397yg2.html" target="_blank">
-          <img src="/images/v3.jpg" width="1200" /></a>
+          <br /><br /><br /><div id="mod_player_skin2"></div>
           <br /><br /><br /><img src="/images/v4.jpg" /><br /><br /><br />`,
         },
         { title: '2021年万亿食品行业风口一触即发', content: '<img src="/images/text2.jpg" />' },
@@ -76,6 +77,28 @@ export default {
       this.next.title = this.details[index + 1].title;
       this.next.to = `/news/${index + 2}`;
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      const video1 = new window.tvp.VideoInfo();
+      video1.setVid('g325160yeu3');
+      const player1 = new window.tvp.Player(1200, 674);
+      player1.setCurVideo(video1);
+      player1.addParam('adplay', '0'); // 是否播放广告 0 不放 1 放
+      player1.addParam('autoplay', '0'); // 是否自动播放 0 不自动 1 自动
+      player1.addParam('player', 'html5'); // 播放器类型 html5播放器 ocx控件播放器 auto自动适配
+      player1.addParam('pic', '/images/v1.jpg'); // 播放器默认图
+      player1.write('mod_player_skin1');
+      const video2 = new window.tvp.VideoInfo();
+      video2.setVid('r3251397yg2');
+      const player2 = new window.tvp.Player(1200, 674);
+      player2.setCurVideo(video1);
+      player2.addParam('adplay', '0'); // 是否播放广告 0 不放 1 放
+      player2.addParam('autoplay', '0'); // 是否自动播放 0 不自动 1 自动
+      player2.addParam('player', 'html5'); // 播放器类型 html5播放器 ocx控件播放器 auto自动适配
+      player2.addParam('pic', '/images/v3.jpg'); // 播放器默认图
+      player2.write('mod_player_skin2');
+    });
   },
 };
 </script>
