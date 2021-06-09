@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import axios from 'axios';
 import { END_POINT } from '@/config';
-import storage from '@/utils/storage';
 
 // 请求拦截
 const defaultRequestInterceptors = (config) => config;
@@ -55,22 +54,7 @@ class Request {
     newConfig.url = url;
     params && params.isBlob && (newConfig.responseType = 'blob');
     // params && params.isLoading && this.startLoading();
-    return this.client.request(newConfig)
-      .then((res) => {
-        // params && params.isLoading && this.stopLoading();
-        if (res.data && res.status !== 200) {
-          console.error({ title: res.status, content: res.data.message });
-          return null;
-        }
-        if (params && params.isBlob) {
-          return res.data;
-        }
-        if (res.data && res.data.code !== '0000') {
-          storage.set('ajax_error', res.data);
-          return null;
-        }
-        return res.data;
-      });
+    return this.client.request(newConfig).then((res) => res.data);
   }
 }
 
@@ -101,23 +85,3 @@ const request = new Request({
 });
 
 export default request;
-
-// 9999 系统异常
-// 0001 请求参数错误
-// 0002 您还没有登录！请登录。
-// 0003 账号不存在
-// 0004 密码输入错误，请重新输出
-// 0005 原密码输入错误，请重新输出
-// 0006 您的账号在异地登录，请重新登录
-// 0007 您的账号异常，请重新登录
-// 0008 该角色已分配给其他用户，请先解除关联关系
-// 0009 账号已存在
-// 0010 仓库编号已存在
-// 0011 角色名称已存在
-// 0012 授权失败
-// 0013 请选择小于七天的数据！
-// 0014 请选择小于三十一天的数据！
-// 0015 请选择小于三天的数据！
-// 0016 产品已存在！
-// 0017 登录过期，请重新登录！
-// 0018 表数据内容错误

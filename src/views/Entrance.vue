@@ -26,10 +26,10 @@
               <div class="sub">
                 <el-radio
                   v-model="params.gender"
-                  label="0">男</el-radio>
+                  label="1">男</el-radio>
                 <el-radio
                   v-model="params.gender"
-                  label="1">女</el-radio>
+                  label="2">女</el-radio>
               </div>
             </div>
           </div>
@@ -55,12 +55,13 @@
               <span>联系电话：</span>
               <div :class="['sub', !verify.mobile && 'warn']">
                 <el-input
+                  maxLength="11"
                   v-model="params.mobile"
                   placeholder="必填项"
                   @blur="inputChange('mobile')"></el-input></div>
               <div
                 v-show="!verify.mobile"
-                class="error">请输入联系电话</div>
+                class="error">{{ mobileError }}</div>
             </div>
             <div class="item">
               <span>微信号码：</span>
@@ -102,6 +103,7 @@
 <script>
 import { pca } from 'area-data'; // pcaa
 import Banner from 'comps/public/Banner.vue';
+import { isPhoneAvailable } from '@/utils/help.js';
 import apply from './api';
 
 export default {
@@ -113,7 +115,7 @@ export default {
       area: [], // 地区
       params: {
         name: '', // 姓名
-        gender: '0', // 性别 0 男, 1 女
+        gender: '1', // 性别 1 男, 2 女
         province: '', // 省
         city: '', // 市
         mobile: '', // 电话
@@ -127,6 +129,7 @@ export default {
         mobile: true,
         wechatID: true,
       },
+      mobileError: '请输入联系电话',
     };
   },
   methods: {
@@ -134,7 +137,20 @@ export default {
       this.verify.area = true;
     },
     inputChange(key) {
-      this.verify[key] = !!this.params.name;
+      if (key === 'mobile') {
+        this.verify.mobile = false;
+        if (!this.params.mobile) {
+          this.mobileError = '请输入联系电话';
+          return;
+        }
+        if (isPhoneAvailable(this.params.mobile)) {
+          this.mobileError = '联系电话格式错误';
+          return;
+        }
+        this.verify.mobile = true;
+        return;
+      }
+      this.verify[key] = !!this.params[key];
     },
     async submit() {
       Object.keys(this.params).forEach((item) => {
@@ -147,12 +163,27 @@ export default {
           }
         }
       });
+      if (!this.params.mobile) {
+        this.verify.mobile = false;
+        this.mobileError = '请输入联系电话';
+        return;
+      }
+      if (isPhoneAvailable(this.params.mobile)) {
+        this.verify.mobile = false;
+        this.mobileError = '联系电话格式错误';
+        return;
+      }
       const result = Object.values(this.verify).every((item) => item);
       if (result) {
+        this.params.gender = Number(this.params.gender);
         this.params.province = this.area[0];
         this.params.city = this.area[1];
         const res = await apply(this.params);
-        console.log('res', res);
+        if (res.result == 0) {
+          this.$notice_success({ minfo: '您已经提交成功' });
+        } else {
+          this.$notice_error({ minfo: res.message });
+        }
       }
     },
   },

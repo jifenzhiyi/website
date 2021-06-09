@@ -8,6 +8,13 @@ module.exports = {
     open: true,
     port: 8001,
     host: '0.0.0.0',
+    proxy: {
+      '/v1.0.0': {
+        target: 'http://47.117.143.104:8750', // cdyq
+        ws: true,
+        changeOrigin: true,
+      },
+    },
   },
   configureWebpack: {
     resolve: {
