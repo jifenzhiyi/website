@@ -152,6 +152,17 @@ export default {
       }
       this.verify[key] = !!this.params[key];
     },
+    reset() {
+      this.area = [];
+      this.params = {
+        name: '', // 姓名
+        gender: '1', // 性别 1 男, 2 女
+        province: '', // 省
+        city: '', // 市
+        mobile: '', // 电话
+        wechatID: '', // 微信
+      };
+    },
     async submit() {
       Object.keys(this.params).forEach((item) => {
         this.verify[item] = true;
@@ -181,6 +192,7 @@ export default {
         const res = await apply(this.params);
         if (res.result == 0) {
           this.$notice_success({ minfo: '您已经提交成功' });
+          this.reset();
         } else {
           this.$notice_error({ minfo: res.message });
         }
